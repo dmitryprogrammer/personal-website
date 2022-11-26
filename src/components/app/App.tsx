@@ -2,8 +2,10 @@ import './App.scss';
 
 export function App() {
   return (
-    <div>
-      <h1 className="title">Title</h1>
-    </div>
-  )
+    <main className='main-wrapper'>
+      <Header></Header>
+      <div>content</div>
+      <div>side</div>
+    </main>
+  );
 }
