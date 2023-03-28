@@ -4,4 +4,5 @@ body {
   padding: 0;
 }
 
-@import "main";
+@import 'vendor';
+@import 'main';

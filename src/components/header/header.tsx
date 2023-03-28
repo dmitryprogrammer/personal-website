@@ -1,9 +1,9 @@
 import './header.scss';
 
-export function Header() {
+export const Header = () => {
   return (
-    <header className="header">
-      header
-    </header>
-  )
-}
+    <>
+      <header className='header'></header>
+    </>
+  );
+};
