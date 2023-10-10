@@ -5,5 +5,5 @@ export default defineConfig({
   plugins: [viteReact()],
   server: {
     port: 8000,
-  }
+  },
 });
