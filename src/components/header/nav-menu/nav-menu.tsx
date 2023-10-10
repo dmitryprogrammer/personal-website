@@ -1,3 +1,4 @@
+import React from 'react';
 import './nav-menu.scss';
 
 export const NavMenu = () => {
