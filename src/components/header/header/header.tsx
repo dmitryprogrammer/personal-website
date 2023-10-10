@@ -5,7 +5,7 @@ import {NavMenu} from '../nav-menu/nav-menu';
 export const Header = () => {
   return (
     <>
-      <header className="header">
+      <header className='header'>
         <Logo />
         <NavMenu />
       </header>
