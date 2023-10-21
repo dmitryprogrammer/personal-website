@@ -1,12 +1,13 @@
 import './App.scss';
-import {Header} from '../header/header/header';
+import { Header } from '../header/header/header';
 
 export function App() {
   return (
     <main className="main-wrapper">
       <Header></Header>
-      <div>content</div>
-      <div>side</div>
+      <div className='container'>content
+        <div>side</div>
+      </div>
     </main>
   );
 }

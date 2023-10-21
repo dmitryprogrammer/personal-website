@@ -4,6 +4,16 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
+
+  &.dark-mode {
+    background-color: #000000;
+    background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
+  }
+
+  &.light-mode {
+    background-color: #44b09e;
+    background-image: linear-gradient(315deg, #44b09e 0%, #e0d2c7 74%);
+  }
 }
 
 html {
