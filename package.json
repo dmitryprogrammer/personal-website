@@ -8,7 +8,8 @@
     "build": "vite build",
     "test": "jest",
     "prettier": "prettier . --write",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
