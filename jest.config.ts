@@ -1,4 +1,4 @@
-import {Config} from 'jest';
+import { Config } from 'jest';
 
 export default {
   transform: {

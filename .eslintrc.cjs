@@ -1,19 +1,19 @@
 module.exports = {
   parserOptions: {
-    'project': ['./tsconfig.json']
+    project: ['./tsconfig.json']
   },
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'airbnb', 'airbnb-typescript'],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
-  'rules': {
+  rules: {
     'import/extensions': [
       'error',
       'always',
       {
-        'js': 'never',
-        'jsx': 'never',
-        'ts': 'never',
-        'tsx': 'never'
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never'
       }
     ]
   },
