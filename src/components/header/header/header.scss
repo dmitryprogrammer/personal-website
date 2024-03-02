@@ -1,5 +1,7 @@
 .header {
-  border-bottom: 3px solid #23826f;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
   padding: 10px 0;
   margin-bottom: 30px;
 }
