@@ -1,1 +1,5 @@
-export const Logo = () => <h1>Dmitry Senior Full-Stack Developer</h1>;
+export const Logo = () => (
+  <h1>
+    <a href='/'>Dmitry Pishchalka</a>
+  </h1>
+);

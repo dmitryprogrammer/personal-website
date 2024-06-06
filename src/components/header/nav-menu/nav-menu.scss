@@ -1,0 +1,10 @@
+.navigation-menu {
+  border-bottom: 3px solid #23826f;
+  padding-bottom: 10px;
+
+  &__list {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+  }
+}
