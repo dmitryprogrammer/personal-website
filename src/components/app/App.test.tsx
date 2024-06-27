@@ -10,6 +10,5 @@ describe('App component tests', () => {
   test('App component rendered', () => {
     render(<App />);
 
-    expect(screen.getByTestId('Dmitry Pishchalka')).toBeInTheDocument();
-  });
+    expect(screen.getByTestId('Dmitry Pishchalka')).toBeInTheDocument();});
 });
