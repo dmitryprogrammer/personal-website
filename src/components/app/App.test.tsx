@@ -10,6 +10,6 @@ describe('App component tests', () => {
   test('App component rendered', () => {
     render(<App />);
 
-    expect(screen.getByTestId('Dmitry Senior Full-Stack Developer')).toBeInTheDocument();
+    expect(screen.getByTestId('Dmitry Pishchalka')).toBeInTheDocument();
   });
 });
