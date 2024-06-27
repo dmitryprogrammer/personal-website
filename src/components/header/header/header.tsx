@@ -1,6 +1,6 @@
 import './header.scss';
-import { Logo } from '../logo/logo';
-import { NavMenu } from '../nav-menu/nav-menu';
+import {Logo} from '../logo/logo';
+import {NavMenu} from '../nav-menu/nav-menu';
 
 export const Header = () => {
   return (
