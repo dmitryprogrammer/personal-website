@@ -1,10 +1,11 @@
+import React from 'react';
 import './App.scss';
-import {Header} from '../header/header/header';
+import { Header } from '../header/header/header';
 
-export function App() {
+export default function App() {
   return (
     <main className="main-wrapper">
-      <Header></Header>
+      <Header />
       <div className="container">
         content
         <div>side</div>

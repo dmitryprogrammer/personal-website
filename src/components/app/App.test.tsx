@@ -1,6 +1,6 @@
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
-import {App} from './App';
+import { App } from './App';
 
 describe('App component tests', () => {
   test('Renders main page correctly', () => {
