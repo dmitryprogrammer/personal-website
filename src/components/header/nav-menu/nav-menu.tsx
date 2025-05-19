@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './nav-menu.scss';
 
 const MENU_ITEMS = ['Main', 'Blog', "Books I've Read", 'Contacts'];
