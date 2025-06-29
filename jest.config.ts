@@ -7,5 +7,6 @@ export default {
   moduleNameMapper: {
     '^.+\\.(css|less|scss)$': 'babel-jest',
   },
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jsdom',
 } as Config;
