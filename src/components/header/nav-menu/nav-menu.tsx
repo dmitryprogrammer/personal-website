@@ -1,4 +1,4 @@
-import './nav-menu.scss';
+import "./nav-menu.scss";
 
 export const NavMenu = () => {
   return (

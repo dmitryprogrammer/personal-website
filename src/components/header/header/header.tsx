@@ -1,6 +1,6 @@
-import { Logo } from '../logo/logo';
-import { NavMenu } from '../nav-menu/nav-menu';
-import './header.scss';
+import {Logo} from "../logo/logo";
+import {NavMenu} from "../nav-menu/nav-menu";
+import "./header.scss";
 
 export const Header = () => {
   return (
