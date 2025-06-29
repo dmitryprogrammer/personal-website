@@ -1,6 +1,5 @@
-import React from 'react';
-import './App.scss';
-import { Header } from '../header/header/header';
+import {Header} from "../header/header/header";
+import "./App.scss";
 
 export default function App() {
   return (
@@ -10,6 +9,7 @@ export default function App() {
         content
         <div>side</div>
       </div>
+      <footer>123</footer>
     </main>
   );
 }

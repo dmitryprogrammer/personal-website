@@ -1,2 +1,16 @@
 .main-wrapper {
+  display: grid;
+  max-width: 800px;
+  width: 100%;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin: 0 auto;
+  min-height: 100vh;
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 0 10px;
+    gap: 10px;
+  }
 }
