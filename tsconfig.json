@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2015",
     "sourceMap": true,
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -17,6 +17,12 @@
     "jsx": "react-jsx"
   },
   "include": ["src"],
+  "exclude": [
+    "./node_modules",
+    "./dist",
+    "eslint.config.mjs",
+    "jest.config.js"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"
