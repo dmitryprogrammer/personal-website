@@ -1,0 +1,32 @@
+.nav-menu {
+  flex: 0.7;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  &__list {
+    list-style: none;
+    display: flex;
+    width: 100%;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__link {
+    color: #000;
+    text-decoration: none;
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0px;
+      height: 2px;
+      background-color: #000;
+      transition: width 0.3s ease;
+    }
+    &:hover:after {
+      width: 100%;
+    }
+  }
+}
