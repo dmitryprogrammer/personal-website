@@ -1,0 +1,27 @@
+.social-media {
+  list-style: none;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 10px;
+
+  &__item {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  &__icon {
+    $size: 24px;
+    max-width: 24px;
+    max-height: 24px;
+  }
+  &__item,
+  &__icon {
+    transition: 0.2s all;
+    &:hover {
+      path: blue;
+      color: blue;
+    }
+  }
+}
