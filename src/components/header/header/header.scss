@@ -3,5 +3,13 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   padding: 10px 0;
-  margin-bottom: 30px;
+  grid-row: 1;
+  height: 100px;
+}
+
+.logo {
+  &,
+  &__link {
+    color: #000;
+  }
 }

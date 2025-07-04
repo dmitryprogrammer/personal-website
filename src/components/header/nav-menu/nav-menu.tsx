@@ -9,6 +9,16 @@ export const NavMenu = () => {
             Home
           </a>
         </li>
+        <li className="nav-menu__item">
+          <a href="#" className="nav-menu__link">
+            Blog
+          </a>
+        </li>
+        <li className="nav-menu__item">
+          <a href="#" className="nav-menu__link">
+            Contacts
+          </a>
+        </li>
       </ul>
     </nav>
   );
