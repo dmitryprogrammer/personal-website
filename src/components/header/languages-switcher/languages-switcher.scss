@@ -1,4 +1,24 @@
 .languages-switcher {
   display: flex;
   align-items: center;
+  justify-content: space-around;
+  min-width: 8%;
+
+  &__item {
+    color: #000;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    &:hover,
+    &.active {
+      font-weight: 600;
+    }
+
+    &.active {
+      color: blueviolet;
+      &:hover {
+        color: #000;
+      }
+    }
+  }
 }

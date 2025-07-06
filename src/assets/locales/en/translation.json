@@ -1,0 +1,11 @@
+{
+  "menu": {
+    "home": "Home",
+    "blog": "Blog",
+    "contacts": "Contacts"
+  },
+  "languages": {
+    "ru": "Ru",
+    "en": "En"
+  }
+}
