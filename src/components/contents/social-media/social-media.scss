@@ -2,7 +2,10 @@
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
   gap: 10px;
+  width: 20rem;
+  justify-self: center;
 
   &__item {
     display: flex;
@@ -10,12 +13,16 @@
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    text-decoration: none;
+    color: #000;
   }
+
   &__icon {
     $size: 24px;
     max-width: 24px;
     max-height: 24px;
   }
+
   &__item,
   &__icon {
     transition: 0.2s all;

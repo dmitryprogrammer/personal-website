@@ -32,13 +32,17 @@ export const SocialMedia = () => {
     <ul className="social-media">
       {socialMedia?.map((mediaIcon, index) => (
         <li key={index}>
-          <a href={mediaIcon.href} target="_blank" className="social-media__item">
-          <img
-            src={mediaIcon.icon}
-            className="social-media__icon"
-            alt={mediaIcon.title}
-          />
-          <span className="social-media__title">{mediaIcon.title}</span>
+          <a
+            href={mediaIcon.href}
+            target="_blank"
+            className="social-media__item"
+          >
+            <img
+              src={mediaIcon.icon}
+              className="social-media__icon"
+              alt={mediaIcon.title}
+            />
+            <span className="social-media__title">{mediaIcon.title}</span>
           </a>
         </li>
       ))}
