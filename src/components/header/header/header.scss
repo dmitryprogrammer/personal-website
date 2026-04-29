@@ -7,8 +7,10 @@
 }
 
 .logo {
-  &,
+  color: #000;
+
   &__link {
-    color: #000;
+    color: inherit;
+    text-decoration: none;
   }
 }

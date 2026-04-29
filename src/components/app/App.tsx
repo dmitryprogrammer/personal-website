@@ -11,7 +11,6 @@ export default function App() {
         <SocialMedia />
         <ContentText />
       </div>
-      <footer></footer>
     </main>
   );
 }

@@ -1,28 +1,29 @@
-import i18next from "i18next";
-import I18NextHttpBackend from "i18next-http-backend";
-import {initReactI18next} from "react-i18next";
+import i18next from "./i18next";
 
 export enum LANGUAGES {
   ru = "ru",
   en = "en",
 }
 
-export const SUPPORTED_LANGUAGES = ["ru", "en"];
-
-i18next
-  .use(I18NextHttpBackend)
-  .use(initReactI18next)
-  .init({
-    backend: {
-      loadPath: "/src/assets/locales/{{lng}}/translation.json",
-    },
-    lng: detectUserLanguage(),
-    supportedLngs: SUPPORTED_LANGUAGES,
-    interpolation: {escapeValue: false},
-  });
+export const SUPPORTED_LANGUAGES = [LANGUAGES.ru, LANGUAGES.en];
 
 export function detectUserLanguage(): LANGUAGES {
+  if (typeof navigator === "undefined") {
+    return LANGUAGES.en;
+  }
   const userLang = navigator.language;
-
-  return userLang.indexOf("ru") >= 0 ? LANGUAGES.ru : LANGUAGES.en;
+  return userLang.toLowerCase().startsWith("ru") ? LANGUAGES.ru : LANGUAGES.en;
 }
+
+export function getInitialLanguage(): LANGUAGES {
+  if (typeof window === "undefined") {
+    return detectUserLanguage();
+  }
+  const stored = localStorage.getItem("i18nextLng") as LANGUAGES | null;
+  if (stored && SUPPORTED_LANGUAGES.includes(stored)) {
+    return stored;
+  }
+  return detectUserLanguage();
+}
+
+export default i18next;

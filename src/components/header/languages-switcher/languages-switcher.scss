@@ -7,7 +7,9 @@
   &__item {
     color: #000;
     text-decoration: none;
-    transition: all 0.3s;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
 
     &:hover,
     &.active {
@@ -16,6 +18,7 @@
 
     &.active {
       color: blueviolet;
+
       &:hover {
         color: #000;
       }

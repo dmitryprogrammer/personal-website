@@ -15,20 +15,17 @@
     cursor: pointer;
     text-decoration: none;
     color: #000;
+    transition: all 0.2s;
+
+    &:hover {
+      color: blue;
+    }
   }
 
   &__icon {
     $size: 24px;
-    max-width: 24px;
-    max-height: 24px;
-  }
-
-  &__item,
-  &__icon {
-    transition: 0.2s all;
-    &:hover {
-      path: blue;
-      color: blue;
-    }
+    max-width: $size;
+    max-height: $size;
+    transition: all 0.2s;
   }
 }
