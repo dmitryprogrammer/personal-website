@@ -1,4 +1,3 @@
-import {useState} from "react";
 import "./social-media.scss";
 
 interface SocialMedia {
@@ -7,7 +6,7 @@ interface SocialMedia {
   href: string;
 }
 
-const SOUCAL_MEDIA: SocialMedia[] = [
+const SOCIAL_MEDIA: SocialMedia[] = [
   {
     icon: "/src/assets/images/icons/linkedin.svg",
     title: "LinkedIn",
@@ -16,7 +15,7 @@ const SOUCAL_MEDIA: SocialMedia[] = [
   {
     icon: "/src/assets/images/icons/mail.svg",
     title: "Mail",
-    href: "goto:dpischalka@gmail.com",
+    href: "mailto:dpischalka@gmail.com",
   },
   {
     icon: "/src/assets/images/icons/telegram.svg",
@@ -25,27 +24,26 @@ const SOUCAL_MEDIA: SocialMedia[] = [
   },
 ];
 
-export const SocialMedia = () => {
-  const [socialMedia] = useState<SocialMedia[]>(SOUCAL_MEDIA);
-
-  return (
-    <ul className="social-media">
-      {socialMedia?.map((mediaIcon, index) => (
-        <li key={index}>
-          <a
-            href={mediaIcon.href}
-            target="_blank"
-            className="social-media__item"
-          >
-            <img
-              src={mediaIcon.icon}
-              className="social-media__icon"
-              alt={mediaIcon.title}
-            />
-            <span className="social-media__title">{mediaIcon.title}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
-};
+export const SocialMedia = () => (
+  <ul className="social-media">
+    {SOCIAL_MEDIA.map((media) => (
+      <li key={media.title}>
+        <a
+          href={media.href}
+          target={media.href.startsWith("http") ? "_blank" : undefined}
+          rel={
+            media.href.startsWith("http") ? "noopener noreferrer" : undefined
+          }
+          className="social-media__item"
+        >
+          <img
+            src={media.icon}
+            className="social-media__icon"
+            alt={media.title}
+          />
+          <span className="social-media__title">{media.title}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+);
