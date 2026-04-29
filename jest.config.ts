@@ -1,5 +1,3 @@
-import { Config } from 'jest';
-
 export default {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
@@ -9,4 +7,4 @@ export default {
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jsdom',
-} as Config;
+};
