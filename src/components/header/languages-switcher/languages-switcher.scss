@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 .languages-switcher {
   display: flex;
   align-items: center;
@@ -17,7 +19,7 @@
     }
 
     &.active {
-      color: blueviolet;
+      color: color.adjust(CornflowerBlue, $lightness: -20%);
 
       &:hover {
         color: #000;
