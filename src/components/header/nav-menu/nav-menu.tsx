@@ -1,6 +1,6 @@
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router";
 import "./nav-menu.scss";
-import {Link} from "react-router";
 
 export const NavMenu = () => {
   const {t} = useTranslation(undefined, {keyPrefix: "menu"});
@@ -9,19 +9,19 @@ export const NavMenu = () => {
     <nav className="nav-menu">
       <ul className="nav-menu__list">
         <li className="nav-menu__item">
-          <Link to="/" className="nav-menu__link">
+          <NavLink to="/" className="nav-menu__link">
             {t("home")}
-          </Link>
+          </NavLink>
         </li>
         <li className="nav-menu__item">
-          <Link to="/blog" className="nav-menu__link">
+          <NavLink to="/blog" className="nav-menu__link">
             {t("blog")}
-          </Link>
+          </NavLink>
         </li>
         <li className="nav-menu__item">
-          <Link to="/contacts" className="nav-menu__link">
+          <NavLink to="/contacts" className="nav-menu__link">
             {t("contacts")}
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>
