@@ -1,5 +1,5 @@
-import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router";
+import {useTranslation} from "react-i18next";
+import {NavLink} from "react-router";
 import "./nav-menu.scss";
 
 export const NavMenu = () => {
