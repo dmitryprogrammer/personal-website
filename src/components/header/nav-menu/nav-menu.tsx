@@ -1,4 +1,5 @@
 import {useTranslation} from "react-i18next";
+import {NavLink} from "react-router";
 import "./nav-menu.scss";
 
 export const NavMenu = () => {
@@ -8,19 +9,19 @@ export const NavMenu = () => {
     <nav className="nav-menu">
       <ul className="nav-menu__list">
         <li className="nav-menu__item">
-          <a href="#" className="nav-menu__link">
+          <NavLink to="/" className="nav-menu__link">
             {t("home")}
-          </a>
+          </NavLink>
         </li>
         <li className="nav-menu__item">
-          <a href="#" className="nav-menu__link">
+          <NavLink to="/blog" className="nav-menu__link">
             {t("blog")}
-          </a>
+          </NavLink>
         </li>
         <li className="nav-menu__item">
-          <a href="#" className="nav-menu__link">
+          <NavLink to="/contacts" className="nav-menu__link">
             {t("contacts")}
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>

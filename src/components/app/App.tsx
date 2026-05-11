@@ -1,5 +1,4 @@
-import {ContentText} from "../contents/content-text/content-text";
-import {SocialMedia} from "../contents/social-media/social-media";
+import {Outlet} from "react-router";
 import {Header} from "../header/header/header";
 import "./App.scss";
 
@@ -8,8 +7,7 @@ export default function App() {
     <main className="main-wrapper">
       <Header />
       <div className="main-container container">
-        <SocialMedia />
-        <ContentText />
+        <Outlet />
       </div>
     </main>
   );
