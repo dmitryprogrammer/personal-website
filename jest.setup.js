@@ -1,3 +1,7 @@
+const {TextEncoder, TextDecoder} = require('util');
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+
 require('@testing-library/jest-dom');
 
 jest.mock('i18next', () => {
@@ -29,4 +33,9 @@ jest.mock('react-i18next', () => ({
     type: '3rdParty',
     init: jest.fn(),
   },
+}));
+
+jest.mock('react-router', () => ({
+  Outlet: () => null,
+  NavLink: ({children}) => children,
 }));

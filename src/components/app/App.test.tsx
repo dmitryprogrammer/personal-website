@@ -22,10 +22,9 @@ describe("App component tests", () => {
     expect(screen.getByText("Dmitry.Pishchalka")).toBeInTheDocument();
   });
 
-  test("renders social media links", () => {
+  test("renders language switcher", () => {
     render(<App />);
-    expect(screen.getByText("LinkedIn")).toBeInTheDocument();
-    expect(screen.getByText("Mail")).toBeInTheDocument();
-    expect(screen.getByText("Telegram")).toBeInTheDocument();
+    expect(screen.getByText("ru")).toBeInTheDocument();
+    expect(screen.getByText("en")).toBeInTheDocument();
   });
 });
