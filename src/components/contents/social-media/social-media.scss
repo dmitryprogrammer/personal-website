@@ -18,7 +18,11 @@
     transition: all 0.2s;
 
     &:hover {
-      color: blue;
+      color: color.adjust(CornflowerBlue, $lightness: -20%);
+
+      .social-media__icon {
+        fill: color.adjust(CornflowerBlue, $lightness: -20%);
+      }
     }
   }
 
@@ -27,5 +31,6 @@
     max-width: $size;
     max-height: $size;
     transition: all 0.2s;
+    fill: currentColor;
   }
 }
