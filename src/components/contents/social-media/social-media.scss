@@ -1,10 +1,12 @@
+@use "sass:color";
+
 .social-media {
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
-  gap: 10px;
-  width: 20rem;
+  justify-content: flex-end;
+  gap: 2.5rem;
+  width: 100%;
   justify-self: center;
 
   &__item {
