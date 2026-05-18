@@ -1,3 +1,5 @@
+import { SocialMedia } from "../social-media/social-media";
+
 export function ContentText() {
-  return <div>Content</div>;
+  return <SocialMedia />;
 }
