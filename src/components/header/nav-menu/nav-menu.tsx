@@ -47,13 +47,26 @@ export const NavMenu = () => {
 
   return (
     <nav className="nav-menu" ref={menuRef}>
+      <div
+        className={`nav-menu__overlay ${isOpen ? "nav-menu__overlay--open" : ""}`}
+        onClick={closeMenu}
+      />
       <button
         className={`nav-menu__toggle ${isOpen ? "nav-menu__toggle--open" : ""}`}
         onClick={toggleMenu}
         aria-label="Toggle menu"
         aria-expanded={isOpen}
-      />
+      >
+        <span />
+      </button>
       <ul className={`nav-menu__list ${isOpen ? "nav-menu__list--open" : ""}`}>
+        <button
+          className={`nav-menu__close ${isOpen ? "nav-menu__close--open" : ""}`}
+          onClick={closeMenu}
+          aria-label="Close menu"
+        >
+          ×
+        </button>
         <li className="nav-menu__item">
           <NavLink to="/" className="nav-menu__link" onClick={closeMenu}>
             {t("home")}
