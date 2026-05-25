@@ -118,6 +118,10 @@
     }
   }
 
+  &__close {
+    display: none;
+  }
+
   @media (max-width: variables.$mobile) {
     flex: 1;
     justify-content: flex-end;
@@ -194,11 +198,6 @@
           }
         }
       }
-    }
-
-    &__close {
-      top: 0;
-      right: 8rem;
     }
 
     &__toggle--open {
