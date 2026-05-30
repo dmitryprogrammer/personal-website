@@ -1,6 +1,8 @@
 import {useTranslation} from "react-i18next";
 import {NavLink} from "react-router";
 import {useState, useRef, useEffect} from "react";
+import {useClickOutside} from "../../../core/hooks/useClickOutside";
+import {NAVIGATION_ITEMS} from "../../../config/navigation";
 import "./nav-menu.scss";
 
 export const NavMenu = () => {
@@ -16,21 +18,7 @@ export const NavMenu = () => {
     setIsOpen(false);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        closeMenu();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen]);
+  useClickOutside(menuRef, closeMenu);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -67,25 +55,17 @@ export const NavMenu = () => {
         >
           ×
         </button>
-        <li className="nav-menu__item">
-          <NavLink to="/" className="nav-menu__link" onClick={closeMenu}>
-            {t("home")}
-          </NavLink>
-        </li>
-        <li className="nav-menu__item">
-          <NavLink to="/blog" className="nav-menu__link" onClick={closeMenu}>
-            {t("blog")}
-          </NavLink>
-        </li>
-        <li className="nav-menu__item">
-          <NavLink
-            to="/contacts"
-            className="nav-menu__link"
-            onClick={closeMenu}
-          >
-            {t("contacts")}
-          </NavLink>
-        </li>
+        {NAVIGATION_ITEMS.map((item) => (
+          <li key={item.path} className="nav-menu__item">
+            <NavLink
+              to={item.path}
+              className="nav-menu__link"
+              onClick={closeMenu}
+            >
+              {t(item.labelKey)}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
