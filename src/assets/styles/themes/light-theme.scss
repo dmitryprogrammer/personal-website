@@ -1,4 +1,11 @@
+// Цветовые переменные для светлой темы
+$light-bg-primary: #e2e8f0;
+$light-bg-secondary: #cbd5e1;
+$light-text-primary: #1a202c;
+$light-text-secondary: #4a5568;
+$light-accent: #3182ce;
+
 body.light-mode {
-  background-color: #e2e8f0;
-  color: #1a202c;
+  background-color: $light-bg-primary;
+  color: $light-text-primary;
 }

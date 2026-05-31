@@ -1,5 +1,18 @@
+// Цветовые переменные для темной темы
+$dark-bg-primary: #000000;
+$dark-bg-secondary: #1a1a1a;
+$dark-bg-gradient-start: #000000;
+$dark-bg-gradient-end: #2c3e50;
+$dark-text-primary: #e2e8f0;
+$dark-text-secondary: #a0aec0;
+$dark-accent: #63b3ed;
+
 body.dark-mode {
-  background-color: #000000;
-  background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
-  color: #e2e8f0;
+  background-color: $dark-bg-primary;
+  background-image: linear-gradient(
+    147deg,
+    $dark-bg-gradient-start 0%,
+    $dark-bg-gradient-end 74%
+  );
+  color: $dark-text-primary;
 }
