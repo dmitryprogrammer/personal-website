@@ -2,13 +2,15 @@ import {useTranslation} from "react-i18next";
 import "./languages-switcher.scss";
 import {LANGUAGES, SUPPORTED_LANGUAGES} from "../../../core";
 
-export const LanguagesSwitcher = () => {
+import { memo, useCallback } from 'react';
+
+export const LanguagesSwitcher = memo(() => {
   const {t, i18n} = useTranslation(undefined, {keyPrefix: "languages"});
   const currentLanguage = i18n.language as LANGUAGES;
 
-  const switchLanguage = (language: LANGUAGES): void => {
+  const switchLanguage = useCallback((language: LANGUAGES): void => {
     i18n.changeLanguage(language);
-  };
+  }, [i18n]);
 
   return (
     <div className="languages-switcher">
@@ -29,4 +31,4 @@ export const LanguagesSwitcher = () => {
       ))}
     </div>
   );
-};
+});

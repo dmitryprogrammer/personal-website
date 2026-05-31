@@ -1,22 +1,24 @@
 import {useTranslation} from "react-i18next";
 import {NavLink} from "react-router";
-import {useState, useRef, useEffect} from "react";
+import {useState, useRef, useEffect, useCallback} from "react";
 import {useClickOutside} from "../../../core/hooks/useClickOutside";
 import {NAVIGATION_ITEMS} from "../../../config/navigation";
 import "./nav-menu.scss";
 
-export const NavMenu = () => {
+import { memo } from 'react';
+
+export const NavMenu = memo(() => {
   const {t} = useTranslation(undefined, {keyPrefix: "menu"});
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const toggleMenu = () => {
+  const toggleMenu = useCallback(() => {
     setIsOpen((prev) => !prev);
-  };
+  }, []);
 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setIsOpen(false);
-  };
+  }, []);
 
   useClickOutside(menuRef, closeMenu);
 
@@ -31,7 +33,7 @@ export const NavMenu = () => {
     return () => {
       document.removeEventListener("keydown", handleEscape);
     };
-  }, [isOpen]);
+  }, [isOpen, closeMenu]);
 
   return (
     <nav className="nav-menu" ref={menuRef}>
@@ -69,4 +71,4 @@ export const NavMenu = () => {
       </ul>
     </nav>
   );
-};
+});
