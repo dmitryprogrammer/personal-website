@@ -5,7 +5,7 @@ import {useClickOutside} from "../../../core/hooks/useClickOutside";
 import {NAVIGATION_ITEMS} from "../../../config/navigation";
 import "./nav-menu.scss";
 
-import { memo } from 'react';
+import {memo} from "react";
 
 export const NavMenu = memo(() => {
   const {t} = useTranslation(undefined, {keyPrefix: "menu"});
