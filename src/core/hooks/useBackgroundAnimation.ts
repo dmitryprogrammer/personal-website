@@ -2,16 +2,16 @@ import {useEffect} from "react";
 import {COLORS, Theme} from "../../types/theme";
 
 interface Dot {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
+  positionX: number;
+  positionY: number;
+  velocityX: number;
+  velocityY: number;
   radius: number;
 }
 
 const MIN_WIDTH = 360;
 const MAX_WIDTH = 1920;
-const MIN_DOT_COUNT = 30;
+const MIN_DOT_COUNT = 100;
 const MAX_DOT_COUNT = 300;
 
 const calculateDotCount = (width: number): number => {
@@ -33,9 +33,9 @@ const ANIMATION_CONFIG = {
 };
 
 const getDistance = (dot1: Dot, dot2: Dot): number => {
-  const dx = dot1.x - dot2.x;
-  const dy = dot1.y - dot2.y;
-  return Math.sqrt(dx * dx + dy * dy);
+  const dotX = dot1.positionX - dot2.positionX;
+  const dotY = dot1.positionY - dot2.positionY;
+  return Math.sqrt(dotX * dotX + dotY * dotY);
 };
 
 export const useBackgroundAnimation = (
@@ -56,6 +56,7 @@ export const useBackgroundAnimation = (
     };
 
     const dots: Dot[] = [];
+    let animationId: number;
 
     const initDots = () => {
       dots.length = 0;
@@ -64,10 +65,10 @@ export const useBackgroundAnimation = (
 
       for (let i = 0; i < dotCount; i++) {
         dots.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * ANIMATION_CONFIG.dotMaxSpeed,
-          vy: (Math.random() - 0.5) * ANIMATION_CONFIG.dotMaxSpeed,
+          positionX: Math.random() * canvas.width,
+          positionY: Math.random() * canvas.height,
+          velocityX: (Math.random() - 0.5) * ANIMATION_CONFIG.dotMaxSpeed,
+          velocityY: (Math.random() - 0.5) * ANIMATION_CONFIG.dotMaxSpeed,
           radius:
             ANIMATION_CONFIG.dotMinRadius +
             Math.random() *
@@ -78,11 +79,13 @@ export const useBackgroundAnimation = (
 
     const updateDots = () => {
       dots.forEach((dot) => {
-        dot.x += dot.vx;
-        dot.y += dot.vy;
+        dot.positionX += dot.velocityX;
+        dot.positionY += dot.velocityY;
 
-        if (dot.x <= 0 || dot.x >= canvas.width) dot.vx = -dot.vx;
-        if (dot.y <= 0 || dot.y >= canvas.height) dot.vy = -dot.vy;
+        if (dot.positionX <= 0 || dot.positionX >= canvas.width)
+          dot.velocityX = -dot.velocityX;
+        if (dot.positionY <= 0 || dot.positionY >= canvas.height)
+          dot.velocityY = -dot.velocityY;
       });
     };
 
@@ -93,17 +96,17 @@ export const useBackgroundAnimation = (
       ctx.strokeStyle = colors.lines;
       ctx.lineWidth = ANIMATION_CONFIG.lineWidth;
 
-      for (let i = 0; i < dots.length; i++) {
-        for (let j = i + 1; j < dots.length; j++) {
-          const distance = getDistance(dots[i], dots[j]);
+      for (let dot1 = 0; dot1 < dots.length; dot1++) {
+        for (let dot2 = dot1 + 1; dot2 < dots.length; dot2++) {
+          const distance = getDistance(dots[dot1], dots[dot2]);
           if (distance < ANIMATION_CONFIG.connectionDistance) {
             const opacity = 1 - distance / ANIMATION_CONFIG.connectionDistance;
             ctx.strokeStyle = `${colors.lines}${Math.floor(opacity * 255)
               .toString(16)
               .padStart(2, "0")}`;
             ctx.beginPath();
-            ctx.moveTo(dots[i].x, dots[i].y);
-            ctx.lineTo(dots[j].x, dots[j].y);
+            ctx.moveTo(dots[dot1].positionX, dots[dot1].positionY);
+            ctx.lineTo(dots[dot2].positionX, dots[dot2].positionY);
             ctx.stroke();
           }
         }
@@ -112,12 +115,11 @@ export const useBackgroundAnimation = (
       dots.forEach((dot) => {
         ctx.fillStyle = colors.dots;
         ctx.beginPath();
-        ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+        ctx.arc(dot.positionX, dot.positionY, dot.radius, 0, Math.PI * 2);
         ctx.fill();
       });
     };
 
-    let animationId: number;
     const animate = () => {
       updateDots();
       draw();
