@@ -1,5 +1,5 @@
-import {useEffect} from "react";
-import {COLORS, Theme} from "../../types/theme";
+import { useEffect, useRef } from "react";
+import { COLORS, Theme } from "../../types/theme";
 
 interface Dot {
   positionX: number;
@@ -11,16 +11,15 @@ interface Dot {
 
 const MIN_WIDTH = 360;
 const MAX_WIDTH = 1920;
-const MIN_DOT_COUNT = 100;
-const MAX_DOT_COUNT = 300;
+const MIN_DOT_COUNT = 50;
+const MAX_DOT_COUNT = 500;
 
 const calculateDotCount = (width: number): number => {
   const boundedWidth = Math.max(MIN_WIDTH, Math.min(MAX_WIDTH, width));
-
   return Math.round(
     MIN_DOT_COUNT +
       (boundedWidth - MIN_WIDTH) *
-        ((MAX_DOT_COUNT - MIN_DOT_COUNT) / (MAX_WIDTH - MIN_WIDTH)),
+        ((MAX_DOT_COUNT - MIN_DOT_COUNT) / (MAX_WIDTH - MIN_WIDTH))
   );
 };
 
@@ -30,6 +29,7 @@ const ANIMATION_CONFIG = {
   dotMaxSpeed: 0.5,
   connectionDistance: 150,
   lineWidth: 0.5,
+  cursorAttachDistance: 50,
 };
 
 const getDistance = (dot1: Dot, dot2: Dot): number => {
@@ -40,8 +40,12 @@ const getDistance = (dot1: Dot, dot2: Dot): number => {
 
 export const useBackgroundAnimation = (
   canvasRef: React.RefObject<HTMLCanvasElement | null>,
-  theme: Theme,
+  theme: Theme
 ) => {
+  // Mutable refs to avoid re‑renders on mouse move / attachment change
+  const mousePos = useRef<{ x: number; y: number } | null>(null);
+  const attachedDotIndex = useRef<number | null>(null);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -60,9 +64,7 @@ export const useBackgroundAnimation = (
 
     const initDots = () => {
       dots.length = 0;
-
       const dotCount = calculateDotCount(canvas.width);
-
       for (let i = 0; i < dotCount; i++) {
         dots.push({
           positionX: Math.random() * canvas.width,
@@ -75,10 +77,13 @@ export const useBackgroundAnimation = (
               (ANIMATION_CONFIG.dotMaxRadius - ANIMATION_CONFIG.dotMinRadius),
         });
       }
+      attachedDotIndex.current = null; // reset attachment on resize
     };
 
     const updateDots = () => {
-      dots.forEach((dot) => {
+      dots.forEach((dot, i) => {
+        if (i === attachedDotIndex.current) return;
+
         dot.positionX += dot.velocityX;
         dot.positionY += dot.velocityY;
 
@@ -87,6 +92,15 @@ export const useBackgroundAnimation = (
         if (dot.positionY <= 0 || dot.positionY >= canvas.height)
           dot.velocityY = -dot.velocityY;
       });
+
+      if (
+        attachedDotIndex.current !== null &&
+        mousePos.current
+      ) {
+        const dot = dots[attachedDotIndex.current];
+        dot.positionX = mousePos.current.x;
+        dot.positionY = mousePos.current.y;
+      }
     };
 
     const draw = () => {
@@ -126,19 +140,68 @@ export const useBackgroundAnimation = (
       animationId = requestAnimationFrame(animate);
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      mousePos.current = { x, y };
+
+      let closestDist = Infinity;
+      let closestIdx = -1;
+      for (let i = 0; i < dots.length; i++) {
+        if (i === attachedDotIndex.current) continue;
+        const dx = dots[i].positionX - x;
+        const dy = dots[i].positionY - y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closestIdx = i;
+        }
+      }
+
+      const threshold = ANIMATION_CONFIG.cursorAttachDistance;
+
+      if (closestIdx !== -1 && closestDist < threshold) {
+        if (attachedDotIndex.current !== null && attachedDotIndex.current !== closestIdx) {
+          dots[attachedDotIndex.current].velocityX =
+            (Math.random() - 0.5) * ANIMATION_CONFIG.dotMaxSpeed;
+          dots[attachedDotIndex.current].velocityY =
+            (Math.random() - 0.5) * ANIMATION_CONFIG.dotMaxSpeed;
+        }
+        attachedDotIndex.current = closestIdx;
+        dots[closestIdx].velocityX = 0;
+        dots[closestIdx].velocityY = 0;
+      }
+    };
+
+    const handleMouseLeave = () => {
+      mousePos.current = null;
+      if (attachedDotIndex.current !== null) {
+        dots[attachedDotIndex.current].velocityX =
+          (Math.random() - 0.5) * ANIMATION_CONFIG.dotMaxSpeed;
+        dots[attachedDotIndex.current].velocityY =
+          (Math.random() - 0.5) * ANIMATION_CONFIG.dotMaxSpeed;
+        attachedDotIndex.current = null;
+      }
+    };
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       initDots();
     };
 
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("resize", resizeCanvas);
+
     resizeCanvas();
     initDots();
     animate();
 
-    window.addEventListener("resize", resizeCanvas);
-
     return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
       window.removeEventListener("resize", resizeCanvas);
       if (animationId) {
         cancelAnimationFrame(animationId);
