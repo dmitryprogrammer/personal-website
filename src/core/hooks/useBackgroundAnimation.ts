@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { COLORS, Theme } from "../../types/theme";
+import {useEffect, useRef} from "react";
+import {COLORS, Theme} from "../../types/theme";
 
 interface Dot {
   positionX: number;
@@ -19,7 +19,7 @@ const calculateDotCount = (width: number): number => {
   return Math.round(
     MIN_DOT_COUNT +
       (boundedWidth - MIN_WIDTH) *
-        ((MAX_DOT_COUNT - MIN_DOT_COUNT) / (MAX_WIDTH - MIN_WIDTH))
+        ((MAX_DOT_COUNT - MIN_DOT_COUNT) / (MAX_WIDTH - MIN_WIDTH)),
   );
 };
 
@@ -40,10 +40,10 @@ const getDistance = (dot1: Dot, dot2: Dot): number => {
 
 export const useBackgroundAnimation = (
   canvasRef: React.RefObject<HTMLCanvasElement | null>,
-  theme: Theme
+  theme: Theme,
 ) => {
   // Mutable refs to avoid re‑renders on mouse move / attachment change
-  const mousePos = useRef<{ x: number; y: number } | null>(null);
+  const mousePos = useRef<{x: number; y: number} | null>(null);
   const attachedDotIndex = useRef<number | null>(null);
 
   useEffect(() => {
@@ -93,10 +93,7 @@ export const useBackgroundAnimation = (
           dot.velocityY = -dot.velocityY;
       });
 
-      if (
-        attachedDotIndex.current !== null &&
-        mousePos.current
-      ) {
+      if (attachedDotIndex.current !== null && mousePos.current) {
         const dot = dots[attachedDotIndex.current];
         dot.positionX = mousePos.current.x;
         dot.positionY = mousePos.current.y;
@@ -144,7 +141,7 @@ export const useBackgroundAnimation = (
       const rect = canvas.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      mousePos.current = { x, y };
+      mousePos.current = {x, y};
 
       let closestDist = Infinity;
       let closestIdx = -1;
@@ -162,7 +159,10 @@ export const useBackgroundAnimation = (
       const threshold = ANIMATION_CONFIG.cursorAttachDistance;
 
       if (closestIdx !== -1 && closestDist < threshold) {
-        if (attachedDotIndex.current !== null && attachedDotIndex.current !== closestIdx) {
+        if (
+          attachedDotIndex.current !== null &&
+          attachedDotIndex.current !== closestIdx
+        ) {
           dots[attachedDotIndex.current].velocityX =
             (Math.random() - 0.5) * ANIMATION_CONFIG.dotMaxSpeed;
           dots[attachedDotIndex.current].velocityY =
