@@ -42,7 +42,6 @@ export const useBackgroundAnimation = (
   canvasRef: React.RefObject<HTMLCanvasElement | null>,
   theme: Theme,
 ) => {
-  // Mutable refs to avoid re‑renders on mouse move / attachment change
   const mousePos = useRef<{x: number; y: number} | null>(null);
   const attachedDotIndex = useRef<number | null>(null);
 
@@ -77,7 +76,7 @@ export const useBackgroundAnimation = (
               (ANIMATION_CONFIG.dotMaxRadius - ANIMATION_CONFIG.dotMinRadius),
         });
       }
-      attachedDotIndex.current = null; // reset attachment on resize
+      attachedDotIndex.current = null;
     };
 
     const updateDots = () => {
