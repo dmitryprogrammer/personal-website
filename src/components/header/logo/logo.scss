@@ -2,7 +2,7 @@
 @use "../../../assets/styles/variables";
 
 .logo {
-  color: #000;
+  color: var(--text-primary);
 
   &__link {
     color: inherit;
@@ -10,7 +10,7 @@
     transition: all 0.3s ease;
 
     &:hover {
-      color: color.adjust(CornflowerBlue, $lightness: -20%);
+      color: var(--text-accent);
     }
   }
 
