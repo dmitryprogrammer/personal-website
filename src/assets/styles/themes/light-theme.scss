@@ -5,7 +5,7 @@ $light-text-primary: #1a202c;
 $light-text-secondary: #4a5568;
 $light-accent: #3182ce;
 
-body.light-mode {
+body.theme.light {
   background-color: $light-bg-primary;
   color: $light-text-primary;
 }

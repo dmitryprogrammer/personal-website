@@ -7,7 +7,7 @@ $dark-text-primary: #e2e8f0;
 $dark-text-secondary: #a0aec0;
 $dark-accent: #63b3ed;
 
-body.dark-mode {
+body.theme.dark {
   background-color: $dark-bg-primary;
   background-image: linear-gradient(
     147deg,
