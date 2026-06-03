@@ -1,24 +1,27 @@
 import "./social-media.scss";
+import {LinkedinIcon} from "./icons/LinkedinIcon";
+import {MailIcon} from "./icons/MailIcon";
+import {TelegramIcon} from "./icons/TelegramIcon";
 
 interface SocialMedia {
-  icon: string;
+  icon: React.FC;
   title: string;
   href: string;
 }
 
 const SOCIAL_MEDIA: SocialMedia[] = [
   {
-    icon: "/src/assets/images/icons/linkedin.svg",
+    icon: LinkedinIcon,
     title: "LinkedIn",
     href: "https://www.linkedin.com/in/dmitryprogrammer/",
   },
   {
-    icon: "/src/assets/images/icons/mail.svg",
+    icon: MailIcon,
     title: "Mail",
     href: "mailto:dpischalka@gmail.com",
   },
   {
-    icon: "/src/assets/images/icons/telegram.svg",
+    icon: TelegramIcon,
     title: "Telegram",
     href: "https://t.me/dmitryprogrammer",
   },
@@ -36,11 +39,7 @@ export const SocialMedia = () => (
           }
           className="social-media__item"
         >
-          <img
-            src={media.icon}
-            className="social-media__icon"
-            alt={media.title}
-          />
+          <media.icon />
           <span className="social-media__title">{media.title}</span>
         </a>
       </li>

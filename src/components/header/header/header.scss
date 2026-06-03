@@ -7,7 +7,7 @@
 }
 
 .logo {
-  color: #000;
+  color: var(--text-primary);
 
   &__link {
     color: inherit;

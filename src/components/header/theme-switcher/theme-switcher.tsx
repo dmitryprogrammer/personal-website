@@ -4,12 +4,13 @@ import "./theme-switcher.scss";
 
 export const ThemeSwitcher = () => {
   const {theme, setTheme} = useTheme();
+  const themeSwitcherActiveClass = "theme-switcher_active";
 
   return (
     <ul className="theme-switcher-list">
       <li className="theme-switcher-list__item">
         <button
-          className={`theme-switcher ${theme === THEMES.LIGHT ? "theme-switcher_active" : ""}`}
+          className={`theme-switcher ${theme === THEMES.LIGHT ? themeSwitcherActiveClass : ""}`}
           onClick={() => setTheme(THEMES.LIGHT)}
         >
           <span className="theme-switcher__icon">Light</span>
@@ -17,7 +18,7 @@ export const ThemeSwitcher = () => {
       </li>
       <li className="theme-switcher-list__item">
         <button
-          className={`theme-switcher ${theme === THEMES.DARK ? "theme-switcher_active" : ""}`}
+          className={`theme-switcher ${theme === THEMES.DARK ? themeSwitcherActiveClass : ""}`}
           onClick={() => setTheme(THEMES.DARK)}
         >
           <span className="theme-switcher__icon">Dark</span>

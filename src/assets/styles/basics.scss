@@ -4,6 +4,29 @@
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  
+  // Общие переменные
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-accent: #3182ce;
+  --bg-primary: #e2e8f0;
+  --bg-secondary: #cbd5e1;
+}
+
+body.theme.light {
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-accent: #3182ce;
+  --bg-primary: #e2e8f0;
+  --bg-secondary: #cbd5e1;
+}
+
+body.theme.dark {
+  --text-primary: #e2e8f0;
+  --text-secondary: #a0aec0;
+  --text-accent: #63b3ed;
+  --bg-primary: #000000;
+  --bg-secondary: #1a1a1a;
 }
 
 * {
@@ -21,4 +44,9 @@ body {
 html {
   overflow-x: auto;
   overflow-y: auto;
+}
+
+body {
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
 }
