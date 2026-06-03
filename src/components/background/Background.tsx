@@ -1,13 +1,13 @@
 import {useRef} from "react";
-import {Theme} from "../../types/theme";
 import {useBackgroundAnimation} from "../../core/hooks/useBackgroundAnimation";
 import "./Background.scss";
+import { THEMES } from "../../config/themes";
 
 interface BackgroundProps {
-  theme: Theme;
+  theme: THEMES;
 }
 
-export const Background: React.FC<BackgroundProps> = ({theme = "light"}) => {
+export const Background: React.FC<BackgroundProps> = ({theme = THEMES.LIGHT}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useBackgroundAnimation(canvasRef, theme);

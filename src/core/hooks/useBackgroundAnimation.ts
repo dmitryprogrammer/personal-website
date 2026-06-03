@@ -1,5 +1,6 @@
 import {useEffect, useRef} from "react";
 import {COLORS, Theme} from "../../types/theme";
+import {THEMES} from "../../config/themes";
 
 interface Dot {
   positionX: number;
@@ -53,9 +54,10 @@ export const useBackgroundAnimation = (
     if (!ctx) return;
 
     const colors = {
-      background: theme === "light" ? COLORS.lightBg : COLORS.darkBg,
-      dots: theme === "light" ? COLORS.lightText : COLORS.darkText,
-      lines: theme === "light" ? COLORS.lightSecondary : COLORS.darkSecondary,
+      background: theme === THEMES.LIGHT ? COLORS.lightBg : COLORS.darkBg,
+      dots: theme === THEMES.LIGHT ? COLORS.lightText : COLORS.darkText,
+      lines:
+        theme === THEMES.LIGHT ? COLORS.lightSecondary : COLORS.darkSecondary,
     };
 
     const dots: Dot[] = [];

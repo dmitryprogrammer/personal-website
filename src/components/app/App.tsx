@@ -1,12 +1,15 @@
-import {Outlet} from "react-router";
-import {Header} from "../header/header/header";
+import { Outlet } from "react-router";
+import { useTheme } from "../../providers/theme-provider";
+import { Background } from "../background/Background";
+import { Header } from "../header/header/header";
 import "./App.scss";
-import {Background} from "../background/Background";
 
 export default function App() {
+  const {theme} = useTheme();
+
   return (
     <>
-      <Background theme="light" />
+      <Background theme={theme} />
       <main className="main-wrapper">
         <Header />
         <div className="main-container container">
