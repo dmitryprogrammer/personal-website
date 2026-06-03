@@ -1,5 +1,3 @@
-@use "sass:color";
-
 .social-media {
   list-style: none;
   display: flex;
@@ -18,15 +16,11 @@
     gap: 10px;
     cursor: pointer;
     text-decoration: none;
-    color: #000;
+    color: var(--text-primary);
     transition: all 0.2s;
 
     &:hover {
-      color: color.adjust(CornflowerBlue, $lightness: -20%);
-
-      .social-media__icon {
-        fill: color.adjust(CornflowerBlue, $lightness: -20%);
-      }
+      color: var(--text-accent);
     }
   }
 
@@ -36,5 +30,12 @@
     max-height: $size;
     transition: all 0.2s;
     fill: currentColor;
+  }
+
+  &__title {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
   }
 }
