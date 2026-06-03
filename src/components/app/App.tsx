@@ -1,7 +1,7 @@
-import { Outlet } from "react-router";
-import { useTheme } from "../../providers/theme-provider";
-import { Background } from "../background/Background";
-import { Header } from "../header/header/header";
+import {Outlet} from "react-router";
+import {useTheme} from "../../providers/theme-provider";
+import {Background} from "../background/Background";
+import {Header} from "../header/header/header";
 import "./App.scss";
 
 export default function App() {
