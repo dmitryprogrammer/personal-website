@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 import {routes} from "./routes";
+import {ThemeProvider} from "./providers/theme-provider";
 import "./assets/styles/index.scss";
 import "./core/i18n/init";
 
@@ -10,6 +11,8 @@ const router = createBrowserRouter(routes);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>,
 );
