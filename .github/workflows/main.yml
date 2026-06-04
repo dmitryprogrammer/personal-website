@@ -7,13 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24"
 
       - name: Install dependencies
-        run: npm i
+        run: npm ci
 
       - name: Cache node modules
         uses: actions/cache@v4
@@ -26,9 +28,14 @@ jobs:
     needs: install-packages
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Cache node modules
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+
+      - name: Restore cache node modules
         uses: actions/cache@v4
         with:
           path: "node_modules"
@@ -42,7 +49,12 @@ jobs:
     needs: install-packages
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24"
 
       - name: Restore cache node modules
         uses: actions/cache@v4
