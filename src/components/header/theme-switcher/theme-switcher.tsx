@@ -1,5 +1,6 @@
 import {THEMES} from "../../../config/themes";
 import {useTheme} from "../../../core/hooks/useTheme";
+import {SunIcon, MoonIcon} from "./icons";
 import "./theme-switcher.scss";
 
 export const ThemeSwitcher = () => {
@@ -12,16 +13,18 @@ export const ThemeSwitcher = () => {
         <button
           className={`theme-switcher ${theme === THEMES.LIGHT ? themeSwitcherActiveClass : ""}`}
           onClick={() => setTheme(THEMES.LIGHT)}
+          title="Light theme"
         >
-          <span className="theme-switcher__icon">Light</span>
+          <SunIcon />
         </button>
       </li>
       <li className="theme-switcher-list__item">
         <button
           className={`theme-switcher ${theme === THEMES.DARK ? themeSwitcherActiveClass : ""}`}
           onClick={() => setTheme(THEMES.DARK)}
+          title="Dark theme"
         >
-          <span className="theme-switcher__icon">Dark</span>
+          <MoonIcon />
         </button>
       </li>
     </ul>
