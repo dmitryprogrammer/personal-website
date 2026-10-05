@@ -11,7 +11,9 @@ export const getSystemTheme = (): THEMES => {
     return THEMES.LIGHT;
   }
 
-  return window.matchMedia(SYSTEM_THEME_QUERY).matches ? THEMES.DARK : THEMES.LIGHT;
+  return window.matchMedia(SYSTEM_THEME_QUERY).matches
+    ? THEMES.DARK
+    : THEMES.LIGHT;
 };
 
 export const useSystemTheme = (): THEMES => {
