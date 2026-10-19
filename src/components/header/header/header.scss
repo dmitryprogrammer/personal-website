@@ -1,8 +1,10 @@
+@use "../../../assets/styles/variables";
+
 .header {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 10px;
   grid-row: 1;
 }
 
@@ -20,4 +22,8 @@
   flex-flow: row nowrap;
   gap: 16px;
   align-items: center;
+
+  @media (max-width: variables.$mobile) {
+    flex-flow: column nowrap;
+  }
 }
