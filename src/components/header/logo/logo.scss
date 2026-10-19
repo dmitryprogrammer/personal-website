@@ -14,7 +14,7 @@
     }
   }
 
-  @media screen and (max-width: variables.$mobileLower) {
+  @media screen and (max-width: variables.$mobile) {
     &__link {
       font-size: 1.2rem;
     }
