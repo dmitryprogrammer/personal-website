@@ -2,6 +2,8 @@ const {TextEncoder, TextDecoder} = require('util');
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 
+HTMLCanvasElement.prototype.getContext = () => null;
+
 require('@testing-library/jest-dom');
 
 jest.mock('i18next', () => {
